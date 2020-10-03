@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+             *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                }
+                body{
+                display: flex;
+                margin: 0;
+                line-height:2;
+                }
+                header{
+                font-size: 24px;
+                font-weight:bold;
+                }
+                #navbar{
+                background-color: lightgray;
+                border-right: 2px solid gray;
+                max-width: 300px;
+                overflow-y:scroll;
+                overflow-x: hidden;
+                height: 100vh;
+                }
+                #navbar header{
+                padding: 10px;
+                }
+                .nav-link{
+                display: block;
+                padding: 10px;
+                border-top: 2px solid gray;
+                font-size: 20px;
+                text-decoration: none;
+                }
+                #main-doc{
+                background-color: honeydew;
+                flex: 1;
+                padding:0 200px 0 50px;
+                max-height: 100vh;
+                overflow-y: scroll;
+                }
+                .main-section{
+                padding: 10px;
+                }
+
+                #img-example{
+                display: flex;
+                }
+                .image{
+                width:50%;
+                }
+
+                pre code {
+                background-color: #eee;
+                border: 1px solid #999;
+                display: block;
+                width: 100%;
+                padding: 20px;
+                }
+
+                .table-class {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                }
+
+                .table-class td, .table-class th {
+                border: 1px solid #ddd;
+                padding: 8px;
+                }
+
+                .table-class tr:nth-child(even){
+                background-color: #f2f2f2;
+                }
+
+                .table-class tr:hover {
+                background-color: #ddd;
+                }
+
+                .table-class th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+                }
+                h4{
+                background-color:black;
+                padding:10px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                color:white;
+                width:100%;
+                border-radius:5px;
+                font-weight:lighter;
+                }
+                h3{
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                }
+                @media(max-width:600px){
+                body{
+                    flex-direction:column;
+                    overflow-y: hidden;
+                }
+                #navbar{
+                    border-right: none;
+                    border-bottom: 2px solid gray;
+                    height: 200px;
+                    max-width: 100%;
+                    width: 100%;
+                    text-align: center;
+                    overflow-y: scroll;
+                    /* overflow-x: hidden; */
+                    z-index: 99;
+                    position: sticky;
+                    top: 0;
+                }
+                #main-doc{
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    position: relative;
+                    top: 0px;
+                    height: calc(100vh - 200px);
+                    flex: unset;
+                }
+                #img-example{
+                    flex-direction: column;
+                }
+                pre code{
+                    width:auto;
+                }
+                .image{
+                width:100%;
+                }
+                }
+        </style>
+    </head>
+    <body>
+        <nav id="navbar">
+            <header>CSS Documentation</header>
+            <a class="nav-link" href="#Introduction">Introduction</a>
+            <a class="nav-link" href="#Types_of_CSS">Types of CSS</a>
+            <a class="nav-link" href="#Types_of_Selectors">Types of Selectors</a>
+            <a class="nav-link" href="#CSS_Combinators">CSS Combinators</a>
+            <a class="nav-link" href="#Attribute_Selector">Attribute Selector</a>
+            <a class="nav-link" href="#Psuedo_Class">Psuedo Class</a>
+            <a class="nav-link" href="#Psuedo_Element">Psuedo Element</a>
+            <a class="nav-link" href="#Units">Units</a>
+            <a class="nav-link" href="#Layout">Layout</a>
+            <a class="nav-link" href="#Responsive_Web_Design">Responsive Web Design</a>
+            <a class="nav-link" href="#See_Also">See Also</a>
+        </nav>
+          <main id="main-doc">
+            <section id="Introduction" class="main-section" >
+                <header>Introduction</header> 
+                <p>
+                    CSS is used to define styles for your web pages,
+                    including the design, layout and variations in display for different devices and screen sizes.
+                </p>
+                <ul>
+                    <li><strong>CSS</strong> Stands for <strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets</li>
+                    <li>CSS describes <strong>how HTML elements are to be displayed on screen, paper, or in other media</strong></li>
+                    <li> CSS <strong>saves a lot of work.</strong> It can control the layout of multiple web pages all at once</li>
+                    <li>External stylesheets are stored in <strong>CSS files</strong></li>
+                </ul>
+                <h3>Syntax</h3>
+                <p>
+                    A CSS rule-set consists of a <strong>selector</strong> and a <strong>declaration block:</strong>
+                </p>
+                <img class="image" src="https://www.w3schools.com/css/selector.gif">
+                <p>
+                    The <strong>Selector</strong> points to the HTML element you want to style.<br>
+                    The <strong>declaration block</strong> contains one or more declarations separated by semicolons.<br>
+                    Each declaration includes a CSS <strong>property name</strong> and a <strong>value</strong>, separated by a colon.<br>
+                    Multiple CSS declarations are separated with semicolons, and declaration blocks are surrounded by curly braces.
+                </p>
+            </section>
+            <section id="Types_of_CSS" class="main-section" >
+                <header>Types of CSS</header>
+                <p>There are three ways of inserting a style sheet</p>
+                <ol>
+                    <li>Inline style<strong>(inside an HTML element)</strong></li>
+                    <p>
+                    An inline style may be used to apply a unique style for a single element.<br>
+                    To use inline styles, add the style attribute to the relevant element. 
+                    The style attribute can contain any CSS property.
+                    </p>
+                    <li>Internal style<strong>(in the head section)</strong></li>
+                    <p>
+                    An internal style sheet may be used if one single HTML page has a unique style.<br>
+                    The internal style is defined inside the <strong>style</strong> element, inside the head section.   
+                    </p>
+                    <li>External style<strong>(inside the head section)</strong></li>
+                    <p>
+                    With an external style sheet, you can change the look of an entire website by changing just one file!<br>
+                    Each HTML page must include a reference to the external style sheet file inside the <strong>link</strong> element, inside the head section.
+                    </p>
+                </ol>
+            </section>
+            <section id="Types_of_Selectors" class="main-section" >
+                <header>Types of Selectors</header>
+                <P>
+                    CSS Selectors are used to "find" or select the HTML elements you want to style 
+                </P>
+                <ul>
+                    <li>Simple selectors (select elements based on name, id, class)</li>
+                    <li><a href="#CSS_Combinators">Combination selectors</a> (select elements based on a specific relationship between them)</li>
+                    <li><a href="#Psuedo_Class">Pseudo-class selectors</a> (select elements based on a certain state)</li>
+                    <li><a href="#Psuedo_Element">Pseudo-elements selectors</a> (select and style a part of an element)</li>
+                    <li><a href="#Attribute_Selector">Attribute selectors</a>(select elements based on an attribute or attribute value)</li>
+                </ul>
+                <h3>CSS element Selector </h3>
+                <p> The element selector selects HTML elements based on the element name</p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <p> Here, all (p) elements on the page will be center-aligned, with a red text color: </p>
+                    <pre><code>
+                    p{
+                    text-align:center;
+                    color:red;
+                    }                  
+                    </code></pre>
+                </div>
+                <h3>CSS id Selector</h3> 
+                <p>
+                    The id selector uses the id attribute of an HTML element to select a specific element.
+                    The id of an element is unique within a page, so the id selector is used to select one unique element.
+                    To select an element with a specific id, write a hash (#) character, followed by the id of the element.
+                </p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <p>The CSS rule below will be applied to the HTML element with id="para1"</p>
+                    <pre><code>
+                    #para1{
+                        text-align:center;
+                        color:red;
+                    }
+                    </code></pre>
+                </div>
+                <h3>CSS class Selector</h3> 
+                <p>
+                    The class selector selects HTML elements with a specific class attribute.
+                    To select elements with a specific class,write a period (.) character, followed by the class name.
+                </p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <p>In this example all HTML elements with class="center" will be red and center-aligned</p>
+                    <pre><code>
+                    .center{
+                        text-align:center;
+                        color:red;
+                    }
+                    </code></pre>
+                </div>
+                <p>
+                    You can also specify that only specific HTML elements should be affected by a class.
+                </p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <p>In this example only (p) elements with class="center" will be center-aligned:</p>
+                    <pre><code>
+                    p.center {
+                        text-align: center;
+                        color: red;
+                    }
+                    </code></pre>
+                </div>
+                <p>
+                    HTML elements can also refer to more than one class
+                </p>
+                <h3>CSS Universal Selector </h3>
+                <p>
+                    The universal selector (*) selects all HTML elements on the page. 
+                </p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <p>The CSS rule below will affect every HTML element on the page:</p>
+                    <pre><code>
+                    *{
+                    text-align:center;
+                    color:red;
+                    }
+                    </code></pre>
+                </div>
+                <h3>CSS Grouping Selector</h3> 
+                <p>
+                    The grouping selector selects all the HTML elements with the same style definitions.
+                </p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <p>In this example we have grouped selectors with the same styling</p>
+                    <pre><code>
+                    h1, h2, p {
+                            text-align: center;
+                            color: red;
+                    }
+                    </code></pre>
+                </div>  
+            </section>
+            <section id="CSS_Combinators" class="main-section" >
+                <header>CSS Combinators</header>
+                <p>
+                    A combinator is something tha explains the relationship between the selectors. 
+                    A CSS selector can contain more than one simple selector. Between selectors, we can include a combinator.
+                </p>
+                <h3>There are four different combinators in CSS:</h3>
+                <ol>
+                    <li>descendant selector (space)</li>
+                    <li>child selector (>)</li>
+                    <li>adjacent sibling selector (+)</li>
+                    <li>general sibling selector (~)</li>
+                </ol>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <pre><code>
+                    div p{
+                    background-color:yellow;
+                    }
+                    </code></pre>
+                </div>  
+            </section>
+            <section id="Attribute_Selector" class="main-section">
+                <header>Attribute Selector</header>
+                <p>It is possible to style HTML elements that have specific attributes or attribute values.</p>
+                <div class="examples">
+                    <h4>Example</h4>
+                    <ul>
+                    <li>The [attribute] selector is used to select elements with a specified attribute.</li>
+                    <li>The <spam>[attribute="value"]</spam> selector is used to select elements with a specified attribute and value.</li>
+                    <li>The <spam>[attribute~="value"]</spam> selector is used to select elements with an attribute value containing a specified word.</li>
+                    <li>The <spam>[attribute|="value"]</spam> selector is used to select elements with the specified attribute starting with the specified value.</li>
+                    <li>The <spam>[attribute^="value"]</spam> selector is used to select elements whose attribute value begins with a specified value.</li>
+                    <li>The <spam>[attribute$="value"]</spam> selector is used to select elements whose attribute value ends with a specified value.</li>
+                    <li>The <spam>[attribute*="value"]</spam> selector is used to select elements whose attribute value contains a specified value.</li>
+                    </ul>
+                    <p>The following example selects all (a) elements with a target attribute.</p>
+                    <pre><code>
+                    a[target] {
+                            background-color: yellow;
+                    } 
+                    </code></pre>
+                    <p>The following example selects all <a> elements with a target="_blank" attribute:</p>
+                    <pre><code>
+                    a[target="_blank"] {
+                            background-color: yellow;
+                    }
+                    </code></pre>
+            
+                    <p>The following example selects all <a> elements with a target="_blank" attribute:</p>
+                    <pre><code>
+                    a[target="_blank"] {
+                                background-color: yellow;
+                    }
+                    </code></pre>
+                    <p>The following example selects all elements with a title attribute that contains a space-separated list of words, one of which is "flower":</p>
+                    <pre><code>
+                    [title~="flower"] {
+                            border: 5px solid yellow;
+                    }
+                    </code></pre>
+                    <p>The following example selects all elements with a class attribute value that begins with "top":</p>
+                    <pre><code>
+                    [class|="top"] {
+                                background: yellow;
+                    }
+                    </code></pre>
+                    <p>The following example selects all elements with a class attribute value that ends with "test":</p>
+                    <pre><code>
+                    [class$="test"] {
+                                background: yellow;
+                    }
+                    </code></pre>
+                    <p>The following example selects all elements with a class attribute value that contains "te":</p>
+                    <pre><code>
+                    [class*="te"] {
+                            background: yellow;
+                    }
+                    </code></pre>
+                </div>  
+            </section>
+            <section id="Psuedo_Class" class="main-section">
+                <header>Psuedo Class</header> 
+                <p>
+                    A pseudo-class is a selector that selects elements that are in a specific state, e.g. they are the first element of their type, or they are being hovered over by the mouse pointer. They tend to act as if you had applied a class to some part of your document, often helping you cut down on excess classes in your markup, and giving you more flexible, maintainable code.
+                </p>
+                <p>Pseudo-classes are keywords that start with a colon:</p>
+                <pre><code>
+                a.highlight:hover {
+                    color: #ff0000;
+                }
+                </code></pre>
+            </section>
+            <section id="Psuedo_Element" class="main-section">
+                <header>Psuedo Element</header>  
+                <p>
+                    Pseudo-elements behave in a similar way, however they act as if you had added a whole new HTML element into the markup, rather than applying a class to existing elements. Pseudo-elements start with a double colon ::.
+                </p>
+                <pre><code>
+                selector::pseudo-element {
+                    property: value;
+                }
+                </code></pre>
+            </section>
+            <section id="Units" class="main-section">
+                <header>Units</header>
+                <p>
+                    CSS has several different units for expressing a length.
+                    Many CSS properties take "length" values, such as width, margin, padding, font-size, etc.
+                    Length is a number followed by a length unit, such as 10px, 2em, etc.
+                    A whitespace cannot appear between the number and the unit. However, if the value is 0, the unit can be omitted.
+                    For some CSS properties, negative lengths are allowed.
+                    There are two types of length units: absolute and relative.
+                </p> 
+                <h3>Absolute Lengths</h3>
+                <p>
+                    The absolute length units are fixed and a length expressed in any of these will appear as exactly that size.
+                    Absolute length units are not recommended for use on screen, because screen sizes vary so much. However, 
+                    they can be used if the output medium is known, such as for print layout.
+                </p>
+                <table class="table-class">
+                    <tr>
+                    <th>Unit</th>
+                    <th>Description</th>
+                    </tr>
+                    <tr>
+                    <td>cm</td>
+                    <td>centimeters</td>
+                    </tr>
+                    <tr>
+                    <td>mm</td>
+                    <td>millimeters</td>
+                    </tr>
+                    <tr>
+                    <td>in</td>
+                    <td>inches (1in = 96px = 2.54cm)</td>
+                    </tr>
+                    <tr>
+                    <td>px</td>
+                    <td>pixels (1px = 1/96th of 1in)</td>
+                    </tr>
+                    <tr>
+                    <td>pt</td>
+                    <td>points (1pt = 1/72 of 1in)</td>
+                    </tr>
+                    <tr>
+                    <td>picas</td>
+                    <td>picas (1pc = 12 pt)</td>
+                    </tr>
+                </table>
+                <h3>Relative Lengths</h3>
+                <p>
+                    Relative length units specify a length relative to another length property. 
+                    Relative length units scales better between different rendering mediums.
+                </p>
+                <table class="table-class">
+                    <tr>
+                    <th>Unit</th>
+                    <th>Description</th>
+                    </tr>
+                    <tr>
+                    <td>em</td>
+                    <td>Relative to the font-size of the element (2em means 2 times the size of the current font)</td>
+                    </tr>
+                    <tr>
+                    <td>ex</td>
+                    <td>Relative to the x-height of the current font (rarely used)</td>
+                    </tr>
+                    <tr>
+                    <td>ch</td>
+                    <td>Relative to width of the "0" (zero)</td>
+                    </tr>
+                    <tr>
+                    <td>rem</td>
+                    <td>Relative to font-size of the root element</td>
+                    </tr>
+                    <tr>
+                    <td>vw</td>
+                    <td>Relative to 1% of the width of the viewport*</td>
+                    </tr>
+                    <tr>
+                    <td>vh</td>
+                    <td>Relative to 1% of the height of the viewport*</td>
+                    </tr>
+                    <tr>
+                    <td>vmin</td>
+                    <td>Relative to 1% of viewport's* smaller dimension</td>
+                    </tr>
+                    <tr>
+                    <td>vmax</td>
+                    <td>Relative to 1% of viewport's* larger dimension</td>
+                    </tr>
+                    <tr>
+                    <td>%</td>
+                    <td>Relative to the parent element</td>
+                    </tr>
+                </table>
+            </section>
+            <section id="Layout" class="main-section">
+                <header>Layout</header>
+                <p>A website is often divided into headers, menus, content and a footer:</p>
+                <h3>Header</h3>
+                <p>
+                    It is used to wrap introductory or navigation links for its parenttag
+                    and works well around content that is repeated at the top on multiple pages.
+                </p>
+                <h3>Navigation Menu</h3>
+                <p>
+                    It is meant to wrap around the main navigation links in your page. If there are repeated links at the botton of the page, 
+                    it is not necessary to markup those with a nav tag as well.
+                    A navigation bar contains a list of links to help visitors navigating through your website 
+                </p>
+                <h3>Main Content</h3>
+                <p>
+                    The layout in this section, often depends on the target users. That is mobile browsers,
+                    tablets and laptops and desktops.
+                </p>
+                <h3>Footer</h3>
+                <p>
+                    Similar to "header" and "nav", the footer element has a built-in landmark that allows assisstive
+                    devices to quickly navigate to it.
+                    The footer is placed at the bottom of your page. It often contains information like copyright and contact info
+                </p>
+                </section>
+                <section id="Responsive_Web_Design" class="main-section">
+                <header>Responsive Web Design</header>
+                <p>
+                    In the early days of web design, pages were built to target a particular screen size. If the user had a larger or smaller screen than the designer expected, results ranged from unwanted scrollbars to overly long line lengths, and poor use of space. As more diverse screen sizes became available, the concept of responsive web design (RWD) appeared, a set of practices that allows web pages to alter their layout and appearance to suit different screen widths, resolutions, etc. It is an idea that changed the way we design for a multi-device web, and in this article, we'll help you understand the main techniques you need to know to master it.
+                </p>
+                <h3>Historic website layouts</h3>
+                <p>At one point in history you had two options when designing a website:</p>
+                <ul>
+                    <li>You could create a liquid site, which would stretch to fill the browser window</li>
+                    <li>or a fixed width site, which would be a fixed size in pixels.</li>
+                </ul>
+                <p>
+                    These two approaches tended to result in a website that looked its best on the screen of the person designing the site! The liquid site resulted in a squashed design on smaller screens (as seen below) and unreadably long line lengths on larger ones.
+                </p>
+                <img class="image" src="https://mdn.mozillademos.org/files/16834/mdn-rwd-liquid.png">
+                <p>The fixed-width site risked a horizontal scrollbar on screens smaller than the site width (as seen below), and lots of white space at the edges of the design on larger screens.</p>
+                <img class="image" src="https://mdn.mozillademos.org/files/16835/mdn-rwd-fixed.png">
+                <p>
+                    As the mobile web started to become a reality with the first feature phones, companies who wished to embrace mobile would generally create a special mobile version of their site, with a different URL (often something like m.example.com, or example.mobi). This meant that two separate versions of the site had to be developed and kept up-to-date.
+                </p>
+                <p>
+                    In addition, these mobile sites often offered a very cut down experience. As mobile devices became more powerful and able to display full websites, this was frustrating to mobile users who found themselves trapped in the site's mobile version and unable to access information they knew was on the full-featured desktop version of the site.
+                </p>
+                <h3>Flexible layout before responsive design</h3>
+                <p>
+                    A number of approaches were developed to try to solve the downsides of the liquid or fixed-width methods of building websites. In 2004 Cameron Adams wrote a post entitled Resolution dependent layout, describing a method of creating a design that could adapt to different screen resolutions. This approach required JavaScript to detect the screen resolution and load the correct CSS.
+                </p>
+                <p>
+                    Zoe Mickley Gillenwater was instrumental in her work to describe and formalize the different ways in which flexible sites could be created, attempting to find a happy medium between filling the screen or being completely fixed in size.
+                </p>
+                <h3>Responsive design</h3>
+                <p>The term responsive design was coined by Ethan Marcotte in 2010 and described the use of three techniques in combination.</p>
+            
+                <ol>
+                    <li>
+                        The first was the idea of fluid grids, something which was already being explored by Gillenwater, and can be read up on in Marcotte's article, Fluid Grids (published in 2009 on A List Apart).
+                    </li>
+                    <li>
+                        The second technique was the idea of fluid images. Using a very simple technique of setting the max-width property to 100%, images would scale down smaller if their containing column became narrower than the image's intrinsic size, but never grow larger. This enables an image to scale down to fit in a flexibly-sized column, rather than overflow it, but not grow larger and become pixellated if the column becomes wider than the image.             </li>
+                    <li>
+                        The third key component was the media query. Media Queries enable the type of layout switch that Cameron Adams had previously explored using JavaScript, using only CSS. Rather than having one layout for all screen sizes, the layout could be changed. Sidebars could be repositioned for the smaller screen, or alternate navigation could be displayed.
+                    </li>
+                </ol>
+                <p>
+                    It is important to understand that responsive web design isn't a separate technology — it is a term used to describe an approach to web design or a set of best practices, used to create a layout that can respond to the device being used to view the content. In Marcotte's original exploration this meant flexible grids (using floats) and media queries, however in the almost 10 years since that article was written, working responsively has become the default. Modern CSS layout methods are inherently responsive, and we have new things built into the web platform to make designing responsive sites easier.
+                </p>
+            
+                <p>The rest of this article will point you to the various web platform features you might want to use when creating a responsive site</p>
+                <h3>Media Queries</h3>
+                <p>
+                    Responsive design was only able to emerge due to the media query. The Media Queries Level 3 specification became a Candidate Recommendation in 2009, meaning that it was deemed ready for implementation in browsers. Media Queries allow us to run a series of tests (e.g. whether the user's screen is greater than a certain width, or a certain resolution) and apply CSS selectively to style the page appropriately for the user's needs.
+                </p>
+                <p>
+                    For example, the following media query tests to see if the current web page is being displayed as screen media (therefore not a printed document) and the viewport is at least 800 pixels wide. The CSS for the .container selector will only be applied if these two things are true.
+                </p>
+                <pre><code>
+                    @media screen and (min-width: 800px) { 
+                    .container { 
+                    margin: 1em 2em; 
+                    } 
+                    }
+                </code></pre>
+                <p>
+                    You can add multiple media queries within a stylesheet, tweaking your whole layout or parts of it to best suit the various screen sizes. The points at which a media query is introduced, and the layout changed, are known as breakpoints.
+                </p>
+                <p>
+                    A common approach when using Media Queries is to create a simple single-column layout for narrow-screen devices (e.g mobile phones), then check for larger screens and implement a multiple-column layout when you know that you have enough screen width to handle it. This is often described as mobile first design
+                </p>
+                <h3>Flexible grids</h3>
+                <p>
+                    Responsive sites don't just change their layout between breakpoints, they are built on flexible grids. A flexible grid means that you don't need to target every possible device size that there is, and build a pixel perfect layout for it. That approach would be impossible given the vast number of differently-sized devices that exist, and the fact that on desktop at least, people do not always have their browser window maximized.
+                </p>
+                <p>
+                    By using a flexible grid, you only need to add in a breakpoint and change the design at the point where the content starts to look bad. For example, if the line lengths become unreadably long as the screen size increases, or a box becomes squashed with two words on each line as it narrows.
+                </p>
+                <p>
+                    In the early days of responsive design, our only option for performing layout was to use floats. Flexible floated layouts were achieved by giving each element a percentage width, and ensuring that across the layout the totals were not more than 100%. In his original piece on fluid grids, Marcotte detailed a formula for taking a layout designed using pixels and converting it into percentages
+                </p>
+                <h3>Modern layout technologies</h3>
+                <p>
+                    Modern layout methods such as Multiple-column layout, Flexbox, and Grid are responsive by default. They all assume that you are trying to create a flexible grid and give you easier ways to do so.
+                </p>
+                <h4>Multicol</h4>
+                <p>
+                    The oldest of these layout methods is multicol — when you specify a column-count, this indicates how many columns you want your content to be split into. The browser then works out the size of these, a size that will change according to the screen size
+                </p>
+                <pre><code>
+                    .container { 
+                    column-count: 3; 
+                    } 
+                </code></pre>
+                <h4>Flexbox</h4>
+                <p>
+                    In Flexbox, flex items will shrink and distribute space between the items according to the space in their container, as their initial behavior. By changing the values for flex-grow and flex-shrink you can indicate how you want the items to behave when they encounter more or less space around them
+                </p>
+                <p>
+                    In the example below the flex items will each take an equal amount of space in the flex container, using the shorthand of flex: 1 as described in the layout topic Flexbox: Flexible sizing of flex items.
+                </p>
+                <pre><code>
+                    .container { 
+                    display: flex; 
+                    } 
+                
+                    .item { 
+                    flex: 1; 
+                    } 
+                </code></pre>
+                <h4>CSS grid</h4>
+                <p>
+                    In CSS Grid Layout the fr unit allows the distribution of available space across grid tracks. The next example creates a grid container with three tracks sized at 1fr. This will create three column tracks, each taking one part of the available space in the container. You can find out more about this approach to create a grid in the Learn Layout Grids topic, under Flexible grids with the fr unit.
+                </p>
+                <pre><code>
+                    .container { 
+                    display: grid; 
+                    grid-template-columns: 1fr 1fr 1fr; 
+                    } 
+                </code></pre>
+                <h3>Responsive images</h3>
+                <p>
+                    The simplest approach to responsive images was as described in Marcotte's early articles on responsive design. Basically, you would take an image that was at the largest size that might be needed, and scale it down. This is still an approach used today, and in most stylesheets, you will find the following CSS somewhere:
+                </p>
+                <pre><code>
+                    img {
+                    max-width: 100%;
+                    }
+                </code></pre>
+                <p>
+                    There are obvious downsides to this approach. The image might be displayed a lot smaller than its intrinsic size, which is a waste of bandwidth — a mobile user may be downloading an image several times the size of what they actually see in the browser window. In addition, you may not want the same image aspect ratio on mobile as on desktop. For example, it might be nice to have a square image for mobile, but show the same scene as a landscape image on desktop. Or, acknowledging the smaller size of an image on mobile you might want to show a different image altogether, one which is more easily understood at a small screen size. These things can't be achieved by simply scaling down an image.
+                </p>
+                <p>
+                    Responsive Images, using the <picture> element and the <img> srcset and sizes attributes solve both of these problems. You can provide multiple sizes along with "hints" (meta data that describes the screen size and resolution the image is best suited for), and the browser will choose the most appropriate image for each device, ensuring that a user will download an image size appropriate for the device they are using.
+                </p>
+                <h3>Responsive typography</h3>
+                <p>
+                    An element of responsive design not covered in earlier work was the idea of responsive typography. Essentially, this describes changing font sizes within media queries to reflect lesser or greater amounts of screen real estate.
+                </p>
+                <p>
+                    In this example, we want to set our level 1 heading to be 4rem, meaning it will be four times our base font size. That's a really large heading! We only want this jumbo heading on larger screen sizes, therefore we first create a smaller heading then use media queries to overwrite it with the larger size if we know that the user has a screen size of at least 1200px.
+                </p>
+                <pre><code>
+                    html { 
+                    font-size: 1em; 
+                    } 
+                
+                    h1 { 
+                    font-size: 2rem; 
+                    } 
+                
+                    @media (min-width: 1200px) { 
+                    h1 {
+                        font-size: 4rem; 
+                    }
+                    } 
+                </code></pre>
+                <h3>The viewport meta tag</h3>
+                <p>
+                    If you look at the HTML source of a responsive page, you will usually see the following <meta> tag in the <head> of the document.
+                </p>
+                <pre><code>
+                    &ltmeta name="viewport" content="width=device-width,initial-scale=1"&lt
+                </code></pre>
+                <p>
+                    This meta tag tells mobile browsers that they should set the width of the viewport to the device width, and scale the document to 100% of its intended size, which shows the document at the mobile-optimized size that you intended.
+                </p>
+                <p>Why is this needed? Because mobile browsers tend to lie about their viewport width.</p>
+                <p>
+                    This meta tag exists because when the original iPhone launched and people started to view websites on a small phone screen, most sites were not mobile optimized. The mobile browser would, therefore, set the viewport width to 960 pixels, render the page at that width, and show the result as a zoomed-out version of the desktop layout. Other mobile browsers (e.g. on Google Android) did the same thing. Users could zoom in and pan around the website to view the bits they were interested in, but it looked bad. You will still see this today if you have the misfortune to come across a site that does not have a responsive design.
+                </p>
+                <p>
+                    The trouble is that your responsive design with breakpoints and media queries won't work as intended on mobile browsers. If you've got a narrow screen layout that kicks in at 480px viewport width or less, and the viewport is set at 960px, you'll never see your narrow screen layout on mobile. By setting width=device-width you are overriding Apple's default width=960px with the actual width of the device, so your media queries will work as intended.
+                </p>
+            </section>
+            <section id="See_Also" class="main-section">
+                <header>See Also</header>
+                <p>
+                    All the contents in this page are taken from 
+                    <a href="https://www.w3schools.com/css/default.asp">w3schools</a>
+                </p>
+            </section>
+        </main>
+    </body>
+</html>
